@@ -14,19 +14,27 @@
 
 \section{Uvod}
 Naj bo $G = (V, E)$ graf, kjer je $V$ množica vozlišč in $E$ množica povezav med vozlišči. Outerplanarni graf (ang. Outherplanar graph) je graf, ki ga lahko narišemo v ravnini tako, 
-da se nobeni dve povezavi ne sekata in da vsa vozlišča ležijo na zunanji strani (licu) grafa. Takšni grafi so podmnožica 
+da se nobeni dve povezavi ne sekata in da vsa vozlišča ležijo na zunanji strani oziroma zunanjem licu grafa. Takšni grafi so podmnožica 
 planarnih oziroma ravninskih grafov, ki jih lahko narišemo v ravnini brez presekajočih se povezav, 
-vendar vozlišča niso nujno na zunanji strani. Graf je zunajplanaren natanko tedaj, ko ne vsebuje podgrafa, 
-ki je homeomorfen z $K_4$ (poln graf na štirih vozliščih) ali z $K_{2,3}$ (poln bipartiten graf z dvema in tremi vozlišči v obeh delih). 
+vendar vozlišča niso nujno na zunanji strani. Graf je outerplanaren natanko tedaj, ko ne vsebuje podgrafa, 
+ki je homeomorfen z $K_4$ ali z $K_{2,3}$. 
 
 \noindent 
-Množica vozlišč $I \subseteq V$ grafa $G$ je liha neodvisna množica, če za vsako vozlišče $u \in I$ velja, da je lihe stopnje ter za vsak par $u, v \in I $ velja, da med njima ne obstaja povezava v $E$.
-ergergerger
+Množica vozlišč $S \subseteq V$ grafa $G$ je liha neodvisna množica, če za vsako vozlišče $u \in I$ velja, da je lihe stopnje ter za vsak par $u, v \in I $ velja, da med njima ne obstaja povezava v $E$.
+Poleg tega velja, da vsako vozlišče $v \in V \setminus S$ nima nobenega soseda v $S$: $N(v) \cap S = \emptyset$ ali pa ima liho število sosedov v $S$: $|N(v) \cap S| \equiv 1 \pmod{2}$ je liho število.
+$N(v)$ označuje množico sosedov vozlišča $v$. Največji moči takšne množice pravimo liho neodvisno število grafa, ki ga označimo z $\alpha_{od}(G)$.
 
 
-\section{Opis problema}
-V nalogi nas zanima, če za vsak zunajplanarni graf $G$ velja neenakost $\alpha_{od}(G) \geqslant n/7$, 
+\section{Opredelitev problema}
+V nalogi nas bo zanimalo število $\alpha_{od}(G)$. Cilj naloge, je preveriti, če za vsak outerplanaren graf $G$ velja neenakost 
+$$\alpha_{od}(G) \geqslant n/7,$$ 
 kjer je $n$ število vozlišč grafa $G$. 
+Najprej bo potrebno implementirati funkcijo, ki za dan graf preveri, če je outerplanaren. 
+Nato bo potrebno razviti algoritem, ki za dan outerplanaren graf izračuna liho neodvisno število $\alpha_{od}(G)$ 
+ter preveri, če velja neenakost $\alpha_{od}(G) \geqslant n/7$.
+V nadaljevanju bo treba implementirati funkcijo, ki bo generirala naključne outerplanarne grafe različnih velikosti in zanje preverila zgornjo neenakost.
+Večje outerplanarne grafe bomo generirali z združevanjem ciklov poljubne dolžine, katerim dodajamo nepresečne diagonale. Dobljene grafe skupaj "zlepimo"
+v drevesno strukturo.
 
 \section{Načrt dela}
 
