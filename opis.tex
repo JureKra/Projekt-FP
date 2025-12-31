@@ -38,6 +38,33 @@ v drevesno strukturo.
 
 \section{Načrt dela}
 
+Delo bo potekalo v programskem okolju \texttt{SageMath}. Najprej bova implementirala funkcijo
+\texttt{is\_outerplanar(G)}, ki za dan graf $G$ preveri, ali je outerplanaren. Pri tem bova
+uporabila vgrajene metode v SageMath-u za delo s planarnimi in outerplanarnimi grafi oziroma
+znano karakterizacijo outerplanarnih grafov z izločitvijo grafov $K_4$ in $K_{2,3}$ kot minorjev.
+
+Nato bova definirala funkcijo \texttt{alpha\_od(G)}, ki za dan graf $G$ izračuna liho neodvisno
+število $\alpha_{od}(G)$. Funkcija bo temeljila na pregledu vseh podmnožic množice vozlišč
+ter preverjanju pogojev lihe neodvisnosti. Ker je takšen pristop računsko zahteven, bo uporabljen
+le za grafe z manjšim številom vozlišč.
+
+Za sistematično preverjanje majhnih grafov bova uporabila vgrajeno funkcijo
+\texttt{graphs(n)}, s katero bova generirala vse grafe z $n$ vozlišči za majhne vrednosti $n$.
+Med temi grafi bova izločila tiste, ki niso outerplanarni, ter za preostale izračunala
+$\alpha_{od}(G)$ in preverila, ali velja neenakost
+\[
+\alpha_{od}(G) \ge \frac{n}{7}.
+\]
+
+Za preverjanje večjih primerov bova implementirala funkcijo za naključno generiranje
+outerplanarnih grafov. Najprej bova generirala 2-povezane outerplanarne grafe tako,
+da vzameva cikel poljubne dolžine in mu dodajava nepresečne diagonale. Nato bova več takšnih
+grafov združila v drevesno strukturo, s čimer bova dobila splošne outerplanarne grafe.
+
+Za vsak tako generiran graf bova preverila outerplanarnost, izračunala vrednost
+$\alpha_{od}(G)$ in preverila veljavnost neenakosti $\alpha_{od}(G) \ge n/7$.
+Rezultate bova analizirala glede na število vozlišč in povezav ter poskušala identificirati
+primere, ki so blizu spodnje meje $n/7$.
 
 
 \end{document}
