@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1767163831 "c:/Users/urhvi/Desktop/FMF/3. letnik/FP/Projekt/Projekt-FP/opis.tex" "opis.pdf" "opis" 1767163832 0
+["pdflatex"] 1767163991 "c:/Users/urhvi/Desktop/FMF/3. letnik/FP/Projekt/Projekt-FP/opis.tex" "opis.pdf" "opis" 1767163992 0
   "C:/Users/urhvi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1764579628 113053 79ee109d6bdea5205109725c2626683e ""
   "C:/Users/urhvi/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk" 1697456717 40136 33a6a8c566c8cefd7e2c33494d096364 ""
   "C:/Users/urhvi/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk" 1697456723 23808 edf7bcae4c0d3fb8cab5b7c68db63175 ""
@@ -59,9 +59,9 @@
   "C:/Users/urhvi/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo" 1687170546 8448 74078c4a887f2cdcd57c3ec111622740 ""
   "C:/Users/urhvi/AppData/Local/Programs/MiKTeX/tex/latex/base/t1cmtt.fd" 1687170546 2443 955a820f7890344dc6c6ca236a5c2990 ""
   "C:/Users/urhvi/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1681893161 29940 9473d58112bc8a88f5505b823a053dde ""
-  "c:/Users/urhvi/Desktop/FMF/3. letnik/FP/Projekt/Projekt-FP/opis.tex" 1767163829 5329 5ba021240044b261164ca1fe61a8e3b0 ""
-  "opis.aux" 1767163832 431 3983eb0f779c84209615924b6fb42644 "pdflatex"
-  "opis.tex" 1767163829 5329 5ba021240044b261164ca1fe61a8e3b0 ""
+  "c:/Users/urhvi/Desktop/FMF/3. letnik/FP/Projekt/Projekt-FP/opis.tex" 1767163990 5061 e8bea55ed5c89647a54bbdf7e7ced491 ""
+  "opis.aux" 1767163992 431 3983eb0f779c84209615924b6fb42644 "pdflatex"
+  "opis.tex" 1767163990 5061 e8bea55ed5c89647a54bbdf7e7ced491 ""
   (generated)
   "opis.aux"
   "opis.log"

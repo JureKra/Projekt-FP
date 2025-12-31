@@ -45,12 +45,10 @@ bova uporabila vgrajeno metodo \texttt{G.is\_outerplanar()}, po potrebi pa tudi 
 \texttt{G.is\_planar()} in preverjanje prepovedanih podgrafov $K_4$ in $K_{2,3}$ z uporabo
 funkcij \texttt{G.subgraph()} ter \texttt{G.is\_isomorphic(H)}.
 
-V nadaljevanju bova definirala funkcijo \texttt{alpha\_od(G)}, ki za dan graf $G$ izračuna liho
-neodvisno število $\alpha_{od}(G)$. Funkcija bo temeljila na pregledu vseh podmnožic množice vozlišč
-grafa $G$ z uporabo razreda \texttt{Subsets(G.vertices())}. Za vsako kandidatno množico $S$ bova
-preverila, ali je neodvisna z uporabo metode \texttt{G.has\_edge(u,v)} ter ali izpolnjuje pogoje
-lihe neodvisnosti z uporabo metode \texttt{G.neighbors(v)}. Ker je takšen pristop eksponenten,
-bo uporaben predvsem za grafe z manjšim številom vozlišč.
+Nato bova definirala funkcijo \texttt{alpha\_od(G)}, ki za dan graf $G$ izračuna liho neodvisno
+število $\alpha_{od}(G)$. Funkcija bo temeljila na pregledu vseh podmnožic množice vozlišč
+ter preverjanju pogojev lihe neodvisnosti. Ker je takšen pristop računsko zahteven, bo uporabljen
+le za grafe z manjšim številom vozlišč.
 
 Za sistematično preverjanje majhnih grafov bova uporabila vgrajeno funkcijo
 \texttt{graphs(n)}, ki generira vse (neizomorfne) grafe z $n$ vozlišči. Vsak generiran graf bova
@@ -59,8 +57,7 @@ ali velja neenakost
 \[
 \alpha_{od}(G) \ge \frac{n}{7}.
 \]
-Rezultate bova po potrebi shranjevala ter primerjala z uporabo metode \texttt{G.is\_isomorphic(H)},
-da se izogneva podvajanju izomorfnih grafov.
+Rezultate bova po potrebi shranjevala ter primerjala, da se izogneva podvajanju izomorfnih grafov.
 
 Ker sistematično generiranje grafov hitro postane računsko prezahtevno, bova za večje vrednosti
 $n$ uporabila naključno generiranje outerplanarnih grafov. V ta namen bova implementirala
