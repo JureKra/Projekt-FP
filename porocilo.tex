@@ -1,0 +1,57 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovene]{babel}
+\usepackage{lmodern}  
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\fn}[1]{\texttt{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \textsc{Fakulteta za matematiko in fiziko\\Univerza v Ljubljani}\\[25pt]
+    {\Large Univerza v Ljubljani\\ Fakulteta za matematiko in fiziko\par}
+    
+    \vspace{3cm}
+    
+    {\Huge \textbf{Zunajravninski grafi}\par}
+    
+    \vspace{3cm}
+    
+    {\large Avtorja:\par}
+    \vspace{0.2cm}
+    {\large Jure Kraševec\\ Urh Videčnik\par}
+    
+    \vfill
+    
+    {\large Februar 2026\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Teoretičen uvod}
+Naj bo $G = (V, E)$ graf, kjer je $V$ množica vozlišč in $E$ množica povezav med vozlišči. Zunajravninski graf (ang. Outherplanar graph) je graf, 
+ki ga lahko narišemo v ravnini tako, da se nobeni dve povezavi ne sekata in da vsa vozlišča ležijo na zunanji strani oziroma zunanjem licu grafa. 
+Takšni grafi so podmnožica ravninskih grafov.
+
+\noindent 
+Množica vozlišč $S \subseteq V$ grafa $G$ je liha neodvisna množica, če za vsako vozlišče $u \in I$ velja, 
+da je lihe stopnje ter za vsak par $u, v \in I $ velja, da med njima ne obstaja povezava v $E$. Za liho neodvisno množico $S$ velja, da vsako vozlišče 
+$v \in V \setminus S$ nima nobenega soseda v $S$: $N(v) \cap S = \emptyset$ ali pa ima liho število sosedov v $S$: $|N(v) \cap S| \equiv 1 \pmod{2}$.
+Z $\alpha_{od}(G)$ označimo največjo moč lihe neodvisne množice grafa $G$.
+
+\section{Cilj naloge}
+Cilj naloge je preveriti, če za vsak outerplanaren graf $G$ velja neenakost
+$$\alpha_{od}(G) \geqslant n/7,$$.
+
+
+\section{Zunajravninski grafi na $ n \leqslant 10$ vozliščih}
+
+
+\end{document}
