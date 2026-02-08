@@ -8,34 +8,28 @@
 \usepackage{graphicx}
 \usepackage{float}
 
-\newcommand{\fn}[1]{\texttt{#1}}
-
 \begin{document}
 
 \begin{titlepage}
     \centering
     \textsc{Fakulteta za matematiko in fiziko\\Univerza v Ljubljani}\\[25pt]
-    {\Large Univerza v Ljubljani\\ Fakulteta za matematiko in fiziko\par}
     
     \vspace{3cm}
     
     {\Huge \textbf{Zunajravninski grafi}\par}
-    
-    \vspace{3cm}
-    
-    {\large Avtorja:\par}
-    \vspace{0.2cm}
-    {\large Jure Kraševec\\ Urh Videčnik\par}
-    
-    \vfill
-    
+    \vspace{1cm}
+    {\Large Poročilo naloge\par}
+
+    \vfill  
+    {\large Jure Kraševec, Urh Videčnik\par}
+    \vspace{1cm}
     {\large Februar 2026\par}
 \end{titlepage}
 
 \tableofcontents
 \newpage
 
-\section{Teoretičen uvod}
+\section{Teoretični uvod}
 Naj bo $G = (V, E)$ graf, kjer je $V$ množica vozlišč in $E$ množica povezav med vozlišči. Zunajravninski graf (ang. Outherplanar graph) je graf, 
 ki ga lahko narišemo v ravnini tako, da se nobeni dve povezavi ne sekata in da vsa vozlišča ležijo na zunanji strani oziroma zunanjem licu grafa. 
 Takšni grafi so podmnožica ravninskih grafov.
@@ -47,11 +41,22 @@ $v \in V \setminus S$ nima nobenega soseda v $S$: $N(v) \cap S = \emptyset$ ali 
 Z $\alpha_{od}(G)$ označimo največjo moč lihe neodvisne množice grafa $G$.
 
 \section{Cilj naloge}
-Cilj naloge je preveriti, če za vsak outerplanaren graf $G$ velja neenakost
-$$\alpha_{od}(G) \geqslant n/7,$$.
-
+Cilj naloge je preveriti, veljavnost neenakosti
+$$\alpha_{od}(G) \geqslant n/7,$$
+za vsak zunajravninski graf $G$ z $n$ vozlišči.
+Nalogo smo razdelili na dva dela. Prvi del je namenjen preverjanju neenakosti na manjših zunajravninskih grafih - grafih z največ $10$ vozlišči.
+V tem delu bomo implementirali algoritem, ki bo generiral vse zunajravninske grafe z največ $10$ vozlišči in za vsak graf izračunal $\alpha_{od}(G)$.
+V drugem delu pa bomo s postopkom lepljenja zunajravninskih grafov, generirali zunajravninske grafe z več kot $10$ vozlišči in
+ poskušali najti protiprimer, torej graf, za katerega ne velja zgornja neenakost.
 
 \section{Zunajravninski grafi na $ n \leqslant 10$ vozliščih}
+Najprej bomo preverili neenakost $\alpha_{od}(G) \geqslant n/7$ za vse zunajravninske grafe z največ $10$ vozlišči.
+Prvo bomo implementirali funkcijo, ki za dan graf preveri, ali je zunajravninski. Ker za vsak zunajravninski graf velja, 
+da ga lahko narišemo kot krožno ravninski graf (angl. Circular planar graph), lahko za preverjanje zunajravninskosti uporabimo 
+vgrajeno metodo \texttt{is\_circular\_planar}. Funkcijo za preverjanje zunajravninskosti smo testirali na nekaj grafih, da smo se prepričali o njeni pravilnosti.
+
+
+
 
 
 \end{document}

@@ -1,4 +1,4 @@
 \babel@toc {slovene}{}\relax 
-\contentsline {section}{\numberline {1}Teoretičen uvod}{2}{}%
+\contentsline {section}{\numberline {1}Teoretični uvod}{2}{}%
 \contentsline {section}{\numberline {2}Cilj naloge}{2}{}%
 \contentsline {section}{\numberline {3}Zunajravninski grafi na $ n \leqslant 10$ vozliščih}{2}{}%
