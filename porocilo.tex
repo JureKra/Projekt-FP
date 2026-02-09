@@ -65,7 +65,7 @@ Ker se želimo izogniti podvajanju izomorfnih grafov, shranjujemo le tiste grafe
     \centering
     \begin{tabular}{cr}
         \toprule
-        $n$ & Število zunajravninskih grafov na $n$ vozliščih \\
+        $n$ & število zunajravninskih grafov na $n$ vozliščih \\
         \midrule
         1 & 1 \\
         2 & 1 \\
@@ -80,14 +80,35 @@ Ker se želimo izogniti podvajanju izomorfnih grafov, shranjujemo le tiste grafe
         \bottomrule
     \end{tabular}
     \caption{Število zunajravninskih grafov na $n \leq 10$ vozliščih.}
-    \label{tab:small-graphs-alphaod1}
 \end{table}
 
 
-Potem smo s funkcijo \texttt{check\_alpha\_od(G)} preverili, če za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost $\alpha_{od}(G) \geqslant n/7$. 
+\noindent Potem smo s funkcijo \texttt{check\_alpha\_od(G)} preverili, ali za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost $\alpha_{od}(G) \geqslant n/7$. 
 Za izračun $\alpha_{od}(G)$ smo implementirali funkcijo \texttt{alpha\_od(G)}, ki pregleda vse možne podmnožice množice vozlišč in preveri, ali so lihe neodvisne množice. 
 Funkcija vrne največjo moč lihe neodvisne množice. 
-Ugotovili smo, da za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost.
+Ugotovili smo, da neenakost velja za vse zunajravninske grafe z največ $10$ vozlišči.
 
+\noindent Za vsak n smo si še ogledali najmanjšo moč lihe neodvisne množice ter število grafov, pri katerih je ta vrednost dosežena.
+Rezultati so prikazani v spodnji tabeli: 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{crr}
+        \toprule
+        $n$ & min $\alpha_{od}$ & število zunajravninskih grafov \\
+        \midrule
+        1 & 1 & 1 \\
+        2 & 1 & 1 \\
+        3 & 1 & 2 \\
+        4 & 1 & 3 \\
+        5 & 1 & 5 \\
+        6 & 1 & 4 \\
+        7 & 1 & 2 \\
+        8 & 2 & 204 \\
+        9 & 2 & 428 \\
+        10 & 2 & 687 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Število zunajravninskih z minimalno vrednostjo $\alpha_{od}$ na $n \leq 10$ vozliščih.}
+\end{table}
 
 \end{document}
