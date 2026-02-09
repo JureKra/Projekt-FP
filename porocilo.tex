@@ -35,8 +35,8 @@ ki ga lahko narišemo v ravnini tako, da se nobeni dve povezavi ne sekata in da 
 Takšni grafi so podmnožica ravninskih grafov.
 
 \noindent 
-Množica vozlišč $S \subseteq V$ grafa $G$ je liha neodvisna množica, če za vsako vozlišče $u \in I$ velja, 
-da je lihe stopnje ter za vsak par $u, v \in I $ velja, da med njima ne obstaja povezava v $E$. Za liho neodvisno množico $S$ velja, da vsako vozlišče 
+Množica vozlišč $S \subseteq V$ grafa $G$ je liha neodvisna množica, če za vsako vozlišče $u \in S$ velja, 
+da je lihe stopnje ter za vsak par $u, v \in S $ velja, da med njima ne obstaja povezava v $E$. Za liho neodvisno množico $S$ velja, da vsako vozlišče 
 $v \in V \setminus S$ nima nobenega soseda v $S$: $N(v) \cap S = \emptyset$ ali pa ima liho število sosedov v $S$: $|N(v) \cap S| \equiv 1 \pmod{2}$.
 Z $\alpha_{od}(G)$ označimo največjo moč lihe neodvisne množice grafa $G$.
 
@@ -47,16 +47,47 @@ za vsak zunajravninski graf $G$ z $n$ vozlišči.
 Nalogo smo razdelili na dva dela. Prvi del je namenjen preverjanju neenakosti na manjših zunajravninskih grafih - grafih z največ $10$ vozlišči.
 V tem delu bomo implementirali algoritem, ki bo generiral vse zunajravninske grafe z največ $10$ vozlišči in za vsak graf izračunal $\alpha_{od}(G)$.
 V drugem delu pa bomo s postopkom lepljenja zunajravninskih grafov, generirali zunajravninske grafe z več kot $10$ vozlišči in
- poskušali najti protiprimer, torej graf, za katerega ne velja zgornja neenakost.
+poskušali najti protiprimer, torej graf, za katerega ne velja zgornja neenakost.
 
 \section{Zunajravninski grafi na $ n \leqslant 10$ vozliščih}
 Najprej bomo preverili neenakost $\alpha_{od}(G) \geqslant n/7$ za vse zunajravninske grafe z največ $10$ vozlišči.
 Prvo bomo implementirali funkcijo, ki za dan graf preveri, ali je zunajravninski. Ker za vsak zunajravninski graf velja, 
 da ga lahko narišemo kot krožno ravninski graf (angl. Circular planar graph), lahko za preverjanje zunajravninskosti uporabimo 
 vgrajeno metodo \texttt{is\_circular\_planar}. Funkcijo za preverjanje zunajravninskosti smo testirali na nekaj grafih, da smo se prepričali o njeni pravilnosti.
+Za samo iskanje števila vseh zunajravninskih grafov smo definirali funkcijo \texttt{outerplanar\_graphs(n)}. Znotraj funkcije smo uporabili metodo \texttt{planar\_graphs(n)}, 
+ki generira vse ravninske grafe z $n$ vozlišči. Uporabo te metode nam omogoča program Plantri, katerega naložimo znotraj SageMath okolja.
+Na ta način prihranimo čas, saj je število ravninskih grafov z $n$ vozlišči veliko manjše od števila vseh grafov z $n$ vozlišči. Za nadaljno filtracijo
+uporabimo pogoj \texttt{G.size()} $\leq$ \texttt{G.order()} $- 3$, ki je nujen pogoj za zunajravninske grafe. Potem za vsak graf, ki izpolnjuje ta pogoj, preverimo še, ali je zunajravninski z uporabo funkcije \texttt{preveri\_outerplanarnost(G)}. 
+Ker se želimo izogniti podvajanju izomorfnih grafov, shranjujemo le tiste grafe, ki niso izomorfni z že shranjenimi grafi, kar najlažje dosežemo z uporabo kanonične oblike grafa, ki jo dobimo z metodo \texttt{canonical\_label()}.
+
+Število zunajravninskih grafov na $n \leq 10$ vozliščih je prikazano v spodnji tabeli:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cr}
+        \toprule
+        $n$ & Število zunajravninskih grafov na $n$ vozliščih \\
+        \midrule
+        1 & 1 \\
+        2 & 1 \\
+        3 & 2 \\
+        4 & 5 \\
+        5 & 13 \\
+        6 & 46 \\
+        7 & 172 \\
+        8 & 777 \\
+        9 & 3\,783 \\
+        10 & 20\,074 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Število zunajravninskih grafov na $n \leq 10$ vozliščih.}
+    \label{tab:small-graphs-alphaod1}
+\end{table}
 
 
-
+Potem smo s funkcijo \texttt{check\_alpha\_od(G)} preverili, če za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost $\alpha_{od}(G) \geqslant n/7$. 
+Za izračun $\alpha_{od}(G)$ smo implementirali funkcijo \texttt{alpha\_od(G)}, ki pregleda vse možne podmnožice množice vozlišč in preveri, ali so lihe neodvisne množice. 
+Funkcija vrne največjo moč lihe neodvisne množice. 
+Ugotovili smo, da za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost.
 
 
 \end{document}
