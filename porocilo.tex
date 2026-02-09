@@ -89,5 +89,40 @@ Za izračun $\alpha_{od}(G)$ smo implementirali funkcijo \texttt{alpha\_od(G)}, 
 Funkcija vrne največjo moč lihe neodvisne množice. 
 Ugotovili smo, da za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost.
 
+\section{Naključno generirani zunajravninski grafi}
+
+Ker je število zunajravninskih grafov z večjim številom vozlišč zelo veliko, v drugem delu naloge ne moremo več pregledati vseh možnih primerov. 
+Namesto tega uporabimo pristop z naključnim generiranjem zunajravninskih grafov in eksperimentalnim preverjanjem neenakosti$ \alpha_{od}(G) \geqslant \frac{n}{7}$.
+
+Za ta namen smo implementirali funkcijo \texttt{random\_outerplanar\_graph(n)}, ki za dano število vozlišč $n$ generira naključen zunajravninski graf. 
+Algoritem temelji na znani strukturni lastnosti zunajravninskih grafov, da jih lahko razstavimo na 2-povezane zunajravninske bloke, 
+ki so med seboj povezani v drevesno strukturo.
+
+Najprej ustvarimo 2-povezan zunajravninski blok kot podgraf triangulacije konveksnega mnogokotnika. 
+To dosežemo s postopkom dodajanja t. i. uhelj, pri katerem zaporedoma vstavljamo nova vozlišča na robove zunanjega cikla in jih povežemo z ustreznima krajiščema. 
+Tako dobimo maksimalen zunajravninski graf. Da povečamo raznolikost generiranih primerov, nato naključno odstranimo del diagonal, 
+pri čemer vedno ohranimo robove zunanjega cikla. Ker odstranjujemo le robove, zunajravninskost ostane ohranjena.
+
+Ko ustvarimo začetni blok, nove bloke postopoma dodajamo, dokler ne dosežemo želenega števila vozlišč. 
+Pri vsakem dodajanju se naključno odločimo med dvema načinoma lepljenja:
+\begin{itemize}
+    \item blok dodamo disjunktno in ga z obstoječim grafom povežemo z enim samim robom (mostom),
+    \item blok prilepimo tako, da identificiramo eno njegovo vozlišče z izbranim vozliščem že zgrajenega grafa.
+\end{itemize}
+Oba postopka ohranjata zunajravninskost grafa. Prvi ustvari mostove, drugi pa rezalna vozlišča, zato dobljeni grafi praviloma niso 2-povezani, 
+kar je skladno s splošno strukturo zunajravninskih grafov.
+
+Če na koncu ostane manjše število vozlišč, ki ne zadostuje za tvorbo novega bloka, jih dodamo kot liste, povezane z enim robom na že obstoječi graf.
+
+\section{Preverjanje neenakosti za večja števila vozlišč}
+
+Za eksperimentalno preverjanje neenakosti smo definirali novo testno funkcijo \texttt{test\_outerplanar\_alpha\_range(n,m)}, ki za vsako naravno število v danem območju velikosti grafov $n \leq |V(G)| \leq m$ generira naključni 
+zunajravninski graf in za vsakega izračuna vrednost $\alpha_{od}(G)$. Za vsak generiran graf preverimo, ali velja $\alpha_{od}(G) \geqslant \frac{|V(G)|}{7}$
+
+S tem pristopom ne moremo dokazati veljavnosti neenakosti za vse zunajravninske grafe, lahko pa z veliko verjetnostjo zaznamo morebitne protiprimere.
+Pognali smo funkcijo za $n = $ in $m = 55$ in nismo našli nobenega protiprimera, kar dodatno potrjuje pravilnost domnevane neenakosti.
+
+Treba je poudariti, da je ta del naloge povsem eksperimentalen. Naključno generiranje grafov ne zagotavlja enakomerne porazdelitve po vseh zunajravninskih grafih, 
+zato rezultatov ne moremo obravnavati kot dokaz.
 
 \end{document}
