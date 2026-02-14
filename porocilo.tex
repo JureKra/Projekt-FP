@@ -110,6 +110,7 @@ Rezultati so prikazani v spodnji tabeli:
     \end{tabular}
     \caption{Število zunajravninskih z minimalno vrednostjo $\alpha_{od}$ na $n \leq 10$ vozliščih.}
 \end{table}
+
 \section{Naključno generirani zunajravninski grafi}
 
 Ker je število zunajravninskih grafov z večjim številom vozlišč zelo veliko, v drugem delu naloge ne moremo več pregledati vseh možnih primerov. 
@@ -137,11 +138,11 @@ kar je skladno s splošno strukturo zunajravninskih grafov.
 
 \section{Preverjanje neenakosti za večja števila vozlišč}
 
-Za eksperimentalno preverjanje neenakosti smo definirali novo testno funkcijo \texttt{test\_outerplanar\_alpha\_range(n,m)}, ki za vsako naravno število v danem območju velikosti grafov $n \leq |V(G)| \leq m$ generira naključni 
-zunajravninski graf in za vsakega izračuna vrednost $\alpha_{od}(G)$. Za vsak generiran graf preverimo, ali velja $\alpha_{od}(G) \geqslant \frac{|V(G)|}{7}$
+Za eksperimentalno preverjanje neenakosti smo definirali novo testno funkcijo \texttt{test\_outerplanar\_alpha\_k\_trials(n,m,k)}, ki za vsako naravno število v danem območju velikosti grafov $n \leq |V(G)| \leq m$ generira $k$ naključnih 
+zunajravninskih grafov in za vsakega izračuna vrednost $\alpha_{od}(G)$. Za vsak generiran graf preverimo, ali velja $\alpha_{od}(G) \geqslant \frac{|V(G)|}{7}$
 
 S tem pristopom ne moremo dokazati veljavnosti neenakosti za vse zunajravninske grafe, lahko pa z veliko verjetnostjo zaznamo morebitne protiprimere.
-Pognali smo funkcijo za $n = $ in $m = 55$ in nismo našli nobenega protiprimera, kar dodatno potrjuje pravilnost domnevane neenakosti.
+Pognali smo funkcijo za $n = 15 $, $m = 30$ in $k=10$, kjer pa nismo našli nobenega protiprimera, kar dodatno potrjuje pravilnost domnevane neenakosti.
 
 Treba je poudariti, da je ta del naloge povsem eksperimentalen. Naključno generiranje grafov ne zagotavlja enakomerne porazdelitve po vseh zunajravninskih grafih, 
 zato rezultatov ne moremo obravnavati kot dokaz.
