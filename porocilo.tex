@@ -83,12 +83,62 @@ Ker se želimo izogniti podvajanju izomorfnih grafov, shranjujemo le tiste grafe
 \end{table}
 
 
-\noindent Potem smo s funkcijo \texttt{check\_alpha\_od(G)} preverili, ali za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost $\alpha_{od}(G) \geqslant n/7$. 
-Za izračun $\alpha_{od}(G)$ smo implementirali funkcijo \texttt{alpha\_od(G)}, ki pregleda vse možne podmnožice množice vozlišč in preveri, ali so lihe neodvisne množice. 
-Funkcija vrne največjo moč lihe neodvisne množice. 
+\noindent 
+Potem smo s funkcijo \texttt{check\_alpha\_od(G)} preverili, ali za vse zunajravninske grafe z največ $10$ vozlišči velja neenakost $\alpha_{od}(G) \geqslant n/7$. 
+Za izračun $\alpha_{od}(G)$ smo implementirali funkcijo \texttt{alpha\_od(G)}, ki izračuna največjo moč lihe neodvisne množice grafa $G$ z uporabo celoštevilskega
+linearnega programiranja. Najprej definiramo binarne spremenljivke $x_v$, ki označujejo, ali je vozlišče $v$ vključeno v liho neodvisno množico ter $y_v$, ki označuje, 
+ali ima vozlišče $v$ sosede, ki so vključeni v liho neodvisno množico ter celoštevilsko spremenljivko $z_v$, ki predstavlja števec za vozlišče $v$. 
+Cilj funkcije je maksimizirati vsoto $x_v$ za vsa vozlišča $v \in V$, kar predstavlja moč lihe neodvisne množice.
 Ugotovili smo, da neenakost velja za vse zunajravninske grafe z največ $10$ vozlišči.
 
+Poskusili smo tudi preveriti neenakost za zunajravninske grafe z največ $15$ vozlišči. Najprej smo prvotno funkcijo \texttt{outerplanar\_graphs(n)} prilagodili tako, da ne uporablja 
+kanoničnega zapisa grafov in potem tudi ne preverjamo izomorfizma grafov, kar je sicer računsko zahtevno, vendar se je izkazalo, da je število zunajravninskih grafov z večjim številom 
+vozlišč preveliko, da bi jih lahko sistematično pregledali. Ukazno vrstico, ki shrani sezname zunajravninskih grafov z največ $15$ vozlišči v en slovar,
+\begin{verbatim}
+slovar_zunajravninskih_grafov2 = 
+    {n: allouterplanar_graphs(n) for n in range(1, 16)}
+\end{verbatim}
+
+smo pustili teči približno 50 ur, vendar v tem času žal nismo uspeli pridobiti vseh zunajravninskih grafov z $15$ vozlišči, saj se je število zunajravninskih grafov z večjim številom vozlišč zelo povečalo.
+Zato smo poskusili s sprotnim shranjevanjem zunajravninskih grafov v slovar: 
+\begin{verbatim}
+slovar_zunajravninskih_grafov2 = {}
+for n in range(1, 16):
+    print(f"Iskanje grafov za število vozlišč n = {n}")
+    slovar_zunajravninskih_grafov2[n] = allouterplanar_graphs(n)
+\end{verbatim}
+
+\noindent Vseeno smo uspeli pridobiti le zunajravninske grafe z največ $10$ vozlišči, saj se je koda izkazala za prepočasno, da bi lahko pridobili zunajravninske grafe z večjim številom vozlišč.
+Spodnja tabela prikazuje število vseh zunajravninskih grafov (brez preverjanja izomorfnosti grafov) z največ $10$ vozlišči, ki smo jih uspeli pridobiti:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cr}
+        \toprule
+        $n$ & število zunajravninskih grafov na $n$ vozliščih \\
+        \midrule
+        1 & 1 \\
+        2 & 1 \\
+        3 & 2 \\
+        4 & 5 \\
+        5 & 18 \\
+        6 & 100 \\
+        7 & 738 \\
+        8 & 6\,823 \\
+        9 & 70\,547 \\
+        10 &  781\,328\\
+        \bottomrule
+    \end{tabular}
+    \caption{Število vseh zunajravninskih grafov na $n \leq 10$ vozliščih.}
+\end{table}
+
+Opazimo, da se število zunajravninskih grafov brez preverjanja izomorfnosti grafov zelo poveča. Za $n = 10$ vozlišč smo uspeli pridobiti 781 328 zunajravninskih grafov,
+ko pa preverimo izomorfizem grafov, se število zunajravninskih grafov z $10$ vozlišči zmanjša na 20 074.
+
+Sedaj smo še s funkcijo \texttt{check2\_alpha\_od(G)} preverili, ali za vse zunajravninske grafe iz zgornje tabele velja neenakost $\alpha_{od}(G) \geqslant n/7$.
+Ugotovili smo, da neenakost velja za vse zunajravninske grafe z največ $10$ vozlišči, tudi za tiste, ki so izomorfni.
+
 \noindent Za vsak n smo si še ogledali najmanjšo moč lihe neodvisne množice ter število grafov, pri katerih je ta vrednost dosežena.
+Tu smo uporabili zunajravninske grafe pridobljene s funkcijo \texttt{outerplanar\_graphs}, torej s preverjanjem izomorfnosti.
 Rezultati so prikazani v spodnji tabeli: 
 \begin{table}[H]
     \centering
